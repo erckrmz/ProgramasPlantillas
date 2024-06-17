@@ -12,21 +12,21 @@ def selectFilledOption(select):
     doc4 = r'ProgramasPlantillas/docx/Manual_Etapas/Empty_Files/Manual_EmptyTemplatesE4.docx'
     tupleDoc=(doc0,doc1,doc2,doc3,doc4)
     if(select==1):
-        listFilledDoc=generateSeparateFulilled(tupleDoc)
+        listFilledDoc=generateSeparateFulfilled(tupleDoc)
         generateFulfilled(listFilledDoc)
     elif(select==2):
-        generateSeparateFulilled(tupleDoc)
+        generateSeparateFulfilled(tupleDoc)
     else:
         print("ERROR! Algo no salió bien al generar las plantillas con información [err01]")
 
 
-def generateSeparateFulilled(tupleDoc)->list:
+def generateSeparateFulfilled(tupleDoc)->list:
     print("generateSeparateFulfilled")
     countEtapa=0
     listFilledDoc = list()
     for doc in tupleDoc:
         docPath = os.path.join('Resultados','Manual_FulfilledTemplatesGeneratedE'+str(countEtapa)+'.docx')
-        shutil.copy2(doc,docPath)
+        shutil.copy(doc,docPath)
         listFilledDoc.append(DocxItem(docPath,Document(docPath)))
         countEtapa+=1
     #TODO: Insertar datos en las tablas por etapa
@@ -35,11 +35,13 @@ def generateSeparateFulilled(tupleDoc)->list:
 
 def generateFulfilled(listFilledDoc):
     print("generateFullfilled")
-    print(listFilledDoc[0].docDocument)
+    #print(listFilledDoc[0].docDocument)
     composer = Composer(listFilledDoc[0].docDocument)
     for i in range(1,len(listFilledDoc)):
         composer.append(listFilledDoc[i].docDocument)
-
     composer.save(os.path.join('Resultados','Manual_FulfilledTemplatesGenerated.docx'))
-
-    #shutil.copy2(r'ProgramasPlantillas/docx/Manual_Empty/Manual_EmptyTemplates.docx','Resultados/Manual_EmptyTemplatesGenerated.docx')
+    for j in range(0,len(listFilledDoc)):
+        if (os.path.exists(listFilledDoc[j].docpath)):
+            #print(f"'{j}' exists")
+            os.remove(listFilledDoc[j].docpath)
+    input("Presiona cualquier tecla para continuar...")

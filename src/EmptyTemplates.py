@@ -20,10 +20,10 @@ def generateSeparateEmpty(tupleDoc):
     print("generateSeparateEmpty")
     countEtapa=0
     for doc in tupleDoc:
-        shutil.copy2(doc,os.path.join('Resultados','Manual_EmptyTemplatesGeneratedE'+str(countEtapa)+'.docx'))
+        shutil.copy(doc,os.path.join('Resultados','Manual_EmptyTemplatesGeneratedE'+str(countEtapa)+'.docx'))
         countEtapa+=1
     
 
 def generateEmpty():
     print("generateEmpty")
-    shutil.copy2(r'ProgramasPlantillas/docx/Manual_Empty/Manual_EmptyTemplates.docx','Resultados/Manual_EmptyTemplatesGenerated.docx')
+    shutil.copy(r'ProgramasPlantillas/docx/Manual_Empty/Manual_EmptyTemplates.docx','Resultados/Manual_EmptyTemplatesGenerated.docx')

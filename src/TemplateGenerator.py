@@ -20,5 +20,7 @@ if __name__ == "__main__":
                     selectFilledOption(select)
                 elif(select==4):
                     exit=True
+            case 3:
+                exit=True
                 
             

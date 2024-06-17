@@ -6,11 +6,11 @@ def startProgram() -> int:
     print("Para empezar, primero debes seleccionar si deseas obtener la plantilla del manual en blanco"+
           " o deseas ingresar información "+
           "sobre la etapa 0 para llenar algunos datos automaticamente.\n")
-    print("(1) Generar plantillas en blanco\n(2) Ingresar datos para precargar plantillas\n")
+    print("(1) Generar plantillas en blanco\n(2) Ingresar datos para precargar plantillas\n(3) Salir\n")
     
     while True:
         x=input("Respuesta: ")
-        if((x!="1" and x!="2") or x is None):
+        if((x!="1" and x!="2" and x!="3") or x is None):
             print("ERROR: La opción no es válida\nINTENTALO DE NUEVO\n")
         else:
             break
